@@ -112,6 +112,18 @@
     @media (max-width: 860px) { .edu, .courses { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 560px) { .edu, .courses { grid-template-columns: 1fr; } }
 
+    /* ---- Idiomas ---- */
+    .langs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; --c: var(--accent2); }
+    .lang { display: flex; flex-direction: column; gap: 4px; padding: 26px 28px; transition: transform .15s, border-color .15s; }
+    .lang:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--c) 45%, var(--border)); }
+    .lang .cc { font-size: .72rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text); }
+    .lang h4 { font-size: 1.25rem; font-weight: 800; }
+    .lang .desc { color: var(--muted); font-size: .88rem; margin-bottom: 12px; }
+    .lang .bar { height: 5px; border-radius: 4px; background: var(--border); overflow: hidden; margin-bottom: 14px; }
+    .lang .bar i { display: block; height: 100%; width: var(--w); border-radius: 4px; background: linear-gradient(90deg, var(--c), color-mix(in srgb, var(--c) 55%, #fff)); }
+    .lang .pill { align-self: flex-start; font-size: .76rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; color: var(--c); background: color-mix(in srgb, var(--c) 12%, transparent); border: 1px solid color-mix(in srgb, var(--c) 30%, transparent); }
+    @media (max-width: 560px) { .langs { grid-template-columns: 1fr; } }
+
     /* ---- Experiencia ---- */
     .exp { display: grid; gap: 14px; }
     .exp .card p { color: var(--muted); font-size: .95rem; }
@@ -131,6 +143,7 @@
       <li><a href="#proyectos">Proyectos</a></li>
       <li><a href="#habilidades">Habilidades</a></li>
       <li><a href="#formacion">Formación</a></li>
+      <li><a href="#idiomas">Idiomas</a></li>
       <li><a href="#experiencia">Experiencia</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
@@ -522,6 +535,30 @@ HTML/Excel con las filas que fallan</code>
         <div class="tags"><span>Angular</span><span>Front-end</span></div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- ================= IDIOMAS ================= -->
+<section id="idiomas">
+  <div class="wrap">
+    <h2>Idiomas</h2>
+    <p class="sub">Capacidad de trabajar y comunicarse en entornos locales e internacionales.</p>
+    <div class="langs">
+      <div class="card lang c-blue">
+        <span class="cc">CO</span>
+        <h4>Español</h4>
+        <span class="desc">Nativo</span>
+        <div class="bar"><i style="--w:100%"></i></div>
+        <span class="pill">C2 – Nativo</span>
+      </div>
+      <div class="card lang c-green">
+        <span class="cc">US</span>
+        <h4>Inglés</h4>
+        <span class="desc">Intermedio – Lectura técnica y documentación</span>
+        <div class="bar"><i style="--w:60%"></i></div>
+        <span class="pill">B1 – Intermedio</span>
+      </div>
     </div>
   </div>
 </section>
