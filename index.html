@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>George Quintero — Portafolio</title>
+  <meta name="description" content="Portafolio de George Quintero: automatización de pruebas, herramientas de escritorio y validación de datos." />
+  <style>
+    :root {
+      --bg: #0f172a; --bg2: #111c33; --card: #172036; --border: #24304d;
+      --text: #e2e8f0; --muted: #94a3b8; --accent: #f59e0b; --accent2: #38bdf8;
+      --radius: 14px;
+    }
+    @media (prefers-color-scheme: light) {
+      :root { --bg: #f5f7fb; --bg2: #ffffff; --card: #ffffff; --border: #e2e8f0; --text: #0f172a; --muted: #64748b; }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; }
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+
+    /* ---- Nav ---- */
+    nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+    nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 58px; }
+    nav .logo { font-weight: 800; letter-spacing: .5px; color: var(--text); }
+    nav .logo span { color: var(--accent); }
+    nav ul { display: flex; gap: 22px; list-style: none; }
+    nav ul a { color: var(--muted); font-size: .92rem; font-weight: 600; }
+    nav ul a:hover { color: var(--text); text-decoration: none; }
+    @media (max-width: 640px) { nav ul { display: none; } }
+
+    /* ---- Hero ---- */
+    header { padding: 84px 0 64px; }
+    header .tag { display: inline-block; color: var(--accent); font-weight: 700; letter-spacing: 2px; font-size: .78rem; text-transform: uppercase; margin-bottom: 14px; }
+    header h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.15; margin-bottom: 16px; }
+    header h1 em { font-style: normal; color: var(--accent2); }
+    header p { color: var(--muted); font-size: 1.1rem; max-width: 640px; margin-bottom: 28px; }
+    .btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 10px; font-weight: 700; font-size: .95rem; border: 1.5px solid var(--border); color: var(--text); background: var(--card); transition: transform .15s, border-color .15s; }
+    .btn:hover { transform: translateY(-2px); border-color: var(--accent2); text-decoration: none; }
+    .btn.primary { background: var(--accent); color: #0f172a; border-color: var(--accent); }
+
+    /* ---- Secciones ---- */
+    section { padding: 56px 0; border-top: 1px solid var(--border); }
+    h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 8px; }
+    .sub { color: var(--muted); margin-bottom: 32px; }
+
+    /* ---- Proyectos ---- */
+    .proyecto { display: grid; grid-template-columns: 1.1fr 1fr; gap: 32px; align-items: center; padding: 32px 0; border-bottom: 1px dashed var(--border); }
+    .proyecto:last-child { border-bottom: none; }
+    .proyecto:nth-child(even) .media { order: 2; }
+    @media (max-width: 760px) { .proyecto { grid-template-columns: 1fr; } .proyecto:nth-child(even) .media { order: 0; } }
+    .media { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); background: var(--card); box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+    .media img { width: 100%; display: block; }
+    .media.placeholder { aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 10px; color: var(--muted); background: linear-gradient(135deg, var(--card), var(--bg2)); }
+    .media.placeholder .icono { font-size: 3.2rem; }
+    .media.placeholder code { font-size: .8rem; background: var(--bg); padding: 8px 12px; border-radius: 8px; color: var(--accent2); text-align: left; white-space: pre; }
+    .info h3 { font-size: 1.35rem; font-weight: 800; margin-bottom: 6px; }
+    .info .rol { color: var(--accent); font-weight: 700; font-size: .85rem; letter-spacing: .5px; text-transform: uppercase; margin-bottom: 12px; }
+    .info p { color: var(--muted); margin-bottom: 12px; }
+    .info ul { color: var(--muted); margin: 0 0 14px 18px; font-size: .95rem; }
+    .info ul li { margin-bottom: 4px; }
+    .tech { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+    .tech span { font-size: .76rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; background: color-mix(in srgb, var(--accent2) 14%, transparent); color: var(--accent2); }
+    .links { display: flex; gap: 14px; flex-wrap: wrap; font-weight: 700; font-size: .92rem; }
+    .links .priv { color: var(--muted); font-weight: 500; }
+
+    /* ---- Habilidades ---- */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+    .card h4 { font-size: 1rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .card ul { list-style: none; color: var(--muted); font-size: .93rem; }
+    .card li { padding: 3px 0; border-bottom: 1px solid var(--border); }
+    .card li:last-child { border-bottom: none; }
+
+    /* ---- Experiencia ---- */
+    .exp { display: grid; gap: 14px; }
+    .exp .card p { color: var(--muted); font-size: .95rem; }
+    .exp .card b { color: var(--text); }
+
+    /* ---- Contacto ---- */
+    #contacto .btns { margin-top: 8px; }
+    footer { padding: 30px 0; color: var(--muted); font-size: .85rem; text-align: center; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#">George<span>.</span>Quintero</a>
+    <ul>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#habilidades">Habilidades</a></li>
+      <li><a href="#experiencia">Experiencia</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <span class="tag">Portafolio</span>
+    <h1>Hola, soy <em>George Quintero</em>.<br>Automatizo pruebas y construyo herramientas que resuelven problemas reales.</h1>
+    <p>Ingeniero de calidad de software con enfoque en automatización: frameworks de pruebas end-to-end, aplicaciones de escritorio y validación de datos. Me gusta entregar software que la gente usa todos los días, probado y documentado.</p>
+    <div class="btns">
+      <a class="btn primary" href="#proyectos">Ver proyectos</a>
+      <a class="btn" href="https://github.com/georgequintero1992" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="#contacto">Contacto</a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= PROYECTOS ================= -->
+<section id="proyectos">
+  <div class="wrap">
+    <h2>Proyectos</h2>
+    <p class="sub">Selección de trabajos propios. Los que tienen enlace están en GitHub con su código y documentación.</p>
+
+    <!-- MobiFlow -->
+    <article class="proyecto">
+      <div class="media placeholder">
+        <div class="icono">📱</div>
+        <code>await $('~btn_login').click();
+await $('#user').setValue('george');
+expect(await $('~home').isDisplayed())
+  .toBe(true);</code>
+        <small>Código TypeScript generado por MobiFlow</small>
+      </div>
+      <div class="info">
+        <h3>MobiFlow</h3>
+        <div class="rol">Grabador y reproductor de pruebas móviles</div>
+        <p>Aplicación de escritorio que muestra el espejo de un dispositivo Android en vivo: se graba interactuando sobre la pantalla y se obtiene una lista de pasos con localizadores estables, reproducción con resaltado paso a paso y exportación a código.</p>
+        <ul>
+          <li>Motor Appium 3 (UiAutomator2), inspector de elementos y captura de evidencias</li>
+          <li>Genera pruebas TypeScript + WebdriverIO listas para integrar en CI</li>
+          <li>Arquitectura agnóstica de plataforma, preparada para iOS (XCUITest)</li>
+        </ul>
+        <div class="tech"><span>Electron</span><span>TypeScript</span><span>Appium</span><span>WebdriverIO</span><span>Android</span></div>
+        <div class="links"><a href="https://github.com/georgequintero1992/Software-Regresion" target="_blank" rel="noopener">Ver código en GitHub →</a></div>
+      </div>
+    </article>
+
+    <!-- Contabilidad IFTAE -->
+    <article class="proyecto">
+      <div class="media"><img src="img/iftae-dashboard.png" alt="Dashboard del sistema de contabilidad IFTAE" loading="lazy" /></div>
+      <div class="info">
+        <h3>Contabilidad IFTAE</h3>
+        <div class="rol">Sistema contable de escritorio para una institución educativa</div>
+        <p>Aplicación instalable, sin internet y sin dependencias externas, que lleva pagos a empleados, ingresos, arqueos de caja e informes. En uso real en el Instituto de Formación Técnica Albert Einstein.</p>
+        <ul>
+          <li>Base SQLite local con <b>respaldo automático</b> tras cada movimiento y historial fechado</li>
+          <li>Anulación de movimientos con trazabilidad, recibos numerados, cierre de mes y bitácora de auditoría</li>
+          <li>Contraseñas con PBKDF2 y permisos verificados en el proceso principal</li>
+          <li><b>Dos compilaciones</b>: Windows 10/11 (SQLite nativo) y Windows 7 de 32 bits (SQLite en WebAssembly), con el mismo archivo de datos</li>
+          <li>Suite de pruebas automatizadas y manual de usuario ilustrado</li>
+        </ul>
+        <div class="tech"><span>Electron</span><span>JavaScript</span><span>SQLite</span><span>Node.js</span><span>Chart.js</span></div>
+        <div class="links"><a href="https://github.com/georgequintero1992/contabilidad-iftae" target="_blank" rel="noopener">Ver código en GitHub →</a></div>
+      </div>
+    </article>
+
+    <!-- Galería IFTAE -->
+    <article class="proyecto" style="grid-template-columns: 1fr 1fr 1fr; padding-top: 0;">
+      <div class="media"><img src="img/iftae-pagos.png" alt="Pagos con recibo anulado" loading="lazy" /></div>
+      <div class="media"><img src="img/iftae-graficas.png" alt="Gráficas de ingresos y egresos" loading="lazy" /></div>
+      <div class="media"><img src="img/iftae-recibo.png" alt="Recibo térmico" loading="lazy" /></div>
+    </article>
+
+    <!-- Compresor PDF -->
+    <article class="proyecto">
+      <div class="media placeholder">
+        <div class="icono">🗜️</div>
+        <code>gs -sDEVICE=pdfwrite
+   -dPDFSETTINGS=/ebook
+   -o salida.pdf entrada.pdf</code>
+        <small>Ghostscript por debajo, un botón por encima</small>
+      </div>
+      <div class="info">
+        <h3>Compresor de PDF</h3>
+        <div class="rol">Herramienta de escritorio</div>
+        <p>Utilidad para reducir el tamaño de archivos PDF con distintos niveles de calidad, pensada para quien tiene que enviar documentos por correo con límite de tamaño y no quiere instalar nada complicado.</p>
+        <div class="tech"><span>Electron</span><span>Node.js</span><span>Ghostscript</span><span>Electron Forge</span></div>
+        <div class="links"><a href="https://github.com/georgequintero1992/comprimir-pdf-web" target="_blank" rel="noopener">Ver código en GitHub →</a></div>
+      </div>
+    </article>
+
+    <!-- DS-160 -->
+    <article class="proyecto">
+      <div class="media placeholder">
+        <div class="icono">🛂</div>
+        <code>Excel (una fila por solicitante)
+   ↓  lectura y validación
+Formulario DS-160 (web)
+   ↓  llenado asistido, sección por sección
+CAPTCHA, foto y envío: siempre manuales</code>
+      </div>
+      <div class="info">
+        <h3>Automatización asistida del formulario DS-160</h3>
+        <div class="rol">Automatización de procesos con Python</div>
+        <p>Rellena el formulario de solicitud de visa americana a partir de una hoja de Excel, campo por campo, reduciendo un proceso de más de una hora de digitación a minutos de revisión. Diseñado para que la persona conserve el control: el CAPTCHA, la foto y el envío se hacen a mano.</p>
+        <ul>
+          <li>Interfaz de escritorio sencilla y empaquetado como ejecutable</li>
+          <li>Manejo de datos personales sensibles: el código es privado</li>
+        </ul>
+        <div class="tech"><span>Python</span><span>Selenium</span><span>openpyxl</span><span>PyInstaller</span></div>
+        <div class="links"><span class="priv">🔒 Repositorio privado (datos personales). Demostración disponible en entrevista.</span></div>
+      </div>
+    </article>
+
+    <!-- Validación de datos -->
+    <article class="proyecto">
+      <div class="media placeholder">
+        <div class="icono">✅</div>
+        <code>"el número de expediente debe ser
+ único y tener 12 dígitos"
+        ↓
+Regla Pandera generada + reporte
+HTML/Excel con las filas que fallan</code>
+      </div>
+      <div class="info">
+        <h3>Validación de datos para migraciones</h3>
+        <div class="rol">Calidad de datos · Python</div>
+        <p>Sistema que valida archivos CSV/Excel antes de una migración masiva: las reglas se escriben en lenguaje natural y se convierten en esquemas de Pandera; el resultado es un reporte navegable con cada error, su fila y su causa.</p>
+        <ul>
+          <li>Reglas editables sin tocar código, manual del sistema generado automáticamente</li>
+          <li>Usado sobre bases de decenas de miles de registros (comparendos y acuerdos de pago)</li>
+        </ul>
+        <div class="tech"><span>Python</span><span>Pandera</span><span>pandas</span><span>Flask</span></div>
+        <div class="links"><span class="priv">🔒 Código con datos de cliente; se muestra en entrevista.</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ================= HABILIDADES ================= -->
+<section id="habilidades">
+  <div class="wrap">
+    <h2>Habilidades</h2>
+    <p class="sub">Lo que uso en el trabajo diario.</p>
+    <div class="grid">
+      <div class="card"><h4>🧪 Automatización de pruebas</h4><ul><li>Playwright (TypeScript)</li><li>Appium · WebdriverIO</li><li>Selenium (Python)</li><li>pytest · Jest</li><li>Reportes personalizados y evidencias</li></ul></div>
+      <div class="card"><h4>💻 Desarrollo</h4><ul><li>JavaScript / TypeScript · Node.js</li><li>Python</li><li>Electron (apps de escritorio)</li><li>HTML · CSS</li><li>SQLite · SQL</li></ul></div>
+      <div class="card"><h4>📊 Datos y calidad</h4><ul><li>pandas · Pandera</li><li>Análisis exploratorio (EDA) automatizado</li><li>Validación de migraciones</li><li>Parquet · Excel · CSV</li></ul></div>
+      <div class="card"><h4>🛠️ Herramientas</h4><ul><li>Git · GitHub · GitLab</li><li>Docker</li><li>CI/CD</li><li>Empaquetado: electron-builder, PyInstaller</li><li>Documentación técnica y de usuario</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCIA ================= -->
+<section id="experiencia">
+  <div class="wrap">
+    <h2>Experiencia destacada</h2>
+    <p class="sub">Trabajo realizado para empresas; el código pertenece a ellas y no se publica.</p>
+    <div class="exp">
+      <div class="card"><p><b>Framework de pruebas end-to-end con Playwright</b> — diseño y mantenimiento de una suite de automatización en TypeScript para una plataforma web de salud (más de 270 iteraciones): estructura por páginas, reporter personalizado, integración con API y ejecución en CI.</p></div>
+      <div class="card"><p><b>Q-EDA, análisis exploratorio y calidad de datos</b> — framework configurable en Python para ejecutar EDA automatizado y evaluación de calidad sobre datasets estructurados, con pruebas, Docker y reportes, para un equipo de ciencia de datos.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACTO ================= -->
+<section id="contacto">
+  <div class="wrap">
+    <h2>Contacto</h2>
+    <p class="sub">Abierto a oportunidades en QA, automatización y desarrollo de herramientas.</p>
+    <div class="btns">
+      <a class="btn primary" href="https://github.com/georgequintero1992" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/TU-USUARIO" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="mailto:TU-CORREO@ejemplo.com">Correo</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">George Quintero · Portafolio · Hecho a mano, sin frameworks.</div>
+</footer>
+
+</body>
+</html>
