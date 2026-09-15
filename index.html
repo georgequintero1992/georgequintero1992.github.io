@@ -250,11 +250,13 @@ HTML/Excel con las filas que fallan</code>
         <div class="rol">Calidad de datos · Python</div>
         <p>Sistema que valida archivos CSV/Excel antes de una migración masiva: las reglas se escriben en lenguaje natural y se convierten en esquemas de Pandera; el resultado es un reporte navegable con cada error, su fila y su causa.</p>
         <ul>
-          <li>Reglas editables sin tocar código, manual del sistema generado automáticamente</li>
-          <li>Usado sobre bases de decenas de miles de registros (comparendos y acuerdos de pago)</li>
+          <li>Reglas editables sin tocar código: tipo, regex, nulos, unicidad, longitud, rangos y reglas condicionales</li>
+          <li>Carga de CSV/Excel con detección de codificación, edición inline de los datos y revalidación</li>
+          <li>Reporte HTML con filtros, exportación a Excel/CSV y manual del sistema generado en Word</li>
+          <li>Usado sobre bases de decenas de miles de registros (comparendos y acuerdos de pago); los datos de cliente quedan fuera del repositorio</li>
         </ul>
-        <div class="tech"><span>Python</span><span>Pandera</span><span>pandas</span><span>Flask</span></div>
-        <div class="links"><span class="priv">🔒 Código con datos de cliente; se muestra en entrevista.</span></div>
+        <div class="tech"><span>Python</span><span>Pandera</span><span>pandas</span><span>Flask</span><span>openpyxl</span></div>
+        <div class="links"><a href="https://github.com/georgequintero1992/validador-datos-pandera" target="_blank" rel="noopener">Ver código en GitHub →</a></div>
       </div>
     </article>
   </div>
