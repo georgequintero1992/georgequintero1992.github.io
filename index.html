@@ -68,12 +68,49 @@
     .links .priv { color: var(--muted); font-weight: 500; }
 
     /* ---- Habilidades ---- */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
     .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
-    .card h4 { font-size: 1rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-    .card ul { list-style: none; color: var(--muted); font-size: .93rem; }
-    .card li { padding: 3px 0; border-bottom: 1px solid var(--border); }
-    .card li:last-child { border-bottom: none; }
+    .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .skills, .courses { --c: var(--accent2); } .edu { --c: var(--accent); }
+    .skill { position: relative; overflow: hidden; display: flex; flex-direction: column; padding: 24px; transition: transform .15s, border-color .15s; }
+    .skill:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--c) 45%, var(--border)); }
+    .skill::before { content: ""; position: absolute; top: -60px; right: -60px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--c) 18%, transparent), transparent 70%); pointer-events: none; }
+    .skill.wide { grid-column: span 2; }
+    .skill .ico { width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center; font-size: 1.35rem; background: color-mix(in srgb, var(--c) 16%, transparent); border: 1px solid color-mix(in srgb, var(--c) 35%, transparent); margin-bottom: 16px; }
+    .skill h4 { font-size: 1.05rem; font-weight: 800; margin-bottom: 6px; }
+    .skill p { color: var(--muted); font-size: .9rem; margin-bottom: 14px; }
+    .skill .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; }
+    .skill .tags span { font-size: .78rem; font-weight: 600; padding: 4px 11px; border-radius: 20px; color: var(--c); background: color-mix(in srgb, var(--c) 12%, transparent); border: 1px solid color-mix(in srgb, var(--c) 30%, transparent); }
+    .c-blue { --c: #38bdf8; } .c-green { --c: #4ade80; } .c-orange { --c: #fb923c; } .c-purple { --c: #c084fc; } .c-amber { --c: #f59e0b; } .c-pink { --c: #f472b6; } .c-red { --c: #f87171; } .c-teal { --c: #2dd4bf; }
+    @media (prefers-color-scheme: light) { .c-blue { --c: #0284c7; } .c-green { --c: #16a34a; } .c-orange { --c: #ea580c; } .c-purple { --c: #9333ea; } .c-amber { --c: #d97706; } .c-pink { --c: #db2777; } .c-red { --c: #dc2626; } .c-teal { --c: #0d9488; } }
+    .levels { display: grid; gap: 12px; }
+    .level { font-size: .85rem; color: var(--muted); }
+    .level .row { display: flex; justify-content: space-between; margin-bottom: 4px; }
+    .level .row b { color: var(--text); font-weight: 600; }
+    .level .bar { height: 5px; border-radius: 4px; background: var(--border); overflow: hidden; }
+    .level .bar i { display: block; height: 100%; width: var(--w); border-radius: 4px; background: linear-gradient(90deg, var(--c), color-mix(in srgb, var(--c) 55%, #fff)); }
+    @media (max-width: 860px) { .skills { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .skills { grid-template-columns: 1fr; } .skill.wide { grid-column: auto; } }
+
+    /* ---- Formación ---- */
+    .edu { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px; }
+    .edu .card { display: flex; flex-direction: column; gap: 4px; padding: 24px; border-top: 3px solid var(--c); }
+    .edu .card .year { color: var(--c); font-weight: 700; font-size: .8rem; letter-spacing: 1px; }
+    .edu .card h4 { font-size: 1.05rem; font-weight: 800; }
+    .edu .card .inst { color: var(--muted); font-size: .9rem; }
+    h3.subh { font-size: 1.15rem; font-weight: 800; margin-bottom: 16px; color: var(--text); }
+    .courses { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .course { position: relative; display: flex; flex-direction: column; padding: 22px; transition: transform .15s, border-color .15s; }
+    .course:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--c) 45%, var(--border)); }
+    .course .top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+    .course .ico { width: 42px; height: 42px; border-radius: 10px; display: grid; place-items: center; font-size: 1.25rem; background: color-mix(in srgb, var(--c) 16%, transparent); border: 1px solid color-mix(in srgb, var(--c) 35%, transparent); }
+    .course .when { font-size: .72rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; color: var(--c); background: color-mix(in srgb, var(--c) 12%, transparent); border: 1px solid color-mix(in srgb, var(--c) 30%, transparent); white-space: nowrap; }
+    .course h4 { font-size: 1rem; font-weight: 800; line-height: 1.35; margin-bottom: 4px; }
+    .course .inst { color: var(--accent2); font-size: .86rem; font-weight: 600; margin-bottom: 10px; }
+    .course p { color: var(--muted); font-size: .86rem; margin-bottom: 14px; }
+    .course .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+    .course .tags span { font-size: .74rem; font-weight: 600; padding: 3px 10px; border-radius: 20px; color: var(--c); background: color-mix(in srgb, var(--c) 12%, transparent); border: 1px solid color-mix(in srgb, var(--c) 30%, transparent); }
+    @media (max-width: 860px) { .edu, .courses { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .edu, .courses { grid-template-columns: 1fr; } }
 
     /* ---- Experiencia ---- */
     .exp { display: grid; gap: 14px; }
@@ -93,6 +130,7 @@
     <ul>
       <li><a href="#proyectos">Proyectos</a></li>
       <li><a href="#habilidades">Habilidades</a></li>
+      <li><a href="#formacion">Formación</a></li>
       <li><a href="#experiencia">Experiencia</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
@@ -266,12 +304,224 @@ HTML/Excel con las filas que fallan</code>
 <section id="habilidades">
   <div class="wrap">
     <h2>Habilidades</h2>
-    <p class="sub">Lo que uso en el trabajo diario.</p>
-    <div class="grid">
-      <div class="card"><h4>🧪 Automatización de pruebas</h4><ul><li>Playwright (TypeScript)</li><li>Appium · WebdriverIO</li><li>Selenium (Python)</li><li>pytest · Jest</li><li>Reportes personalizados y evidencias</li></ul></div>
-      <div class="card"><h4>💻 Desarrollo</h4><ul><li>JavaScript / TypeScript · Node.js</li><li>Python</li><li>Electron (apps de escritorio)</li><li>HTML · CSS</li><li>SQLite · SQL</li></ul></div>
-      <div class="card"><h4>📊 Datos y calidad</h4><ul><li>pandas · Pandera</li><li>Análisis exploratorio (EDA) automatizado</li><li>Validación de migraciones</li><li>Parquet · Excel · CSV</li></ul></div>
-      <div class="card"><h4>🛠️ Herramientas</h4><ul><li>Git · GitHub · GitLab</li><li>Docker</li><li>CI/CD</li><li>Empaquetado: electron-builder, PyInstaller</li><li>Documentación técnica y de usuario</li></ul></div>
+    <p class="sub">Herramientas y prácticas que uso en el trabajo diario.</p>
+    <div class="skills">
+
+      <div class="card skill wide c-blue">
+        <div class="ico">🧪</div>
+        <h4>Pruebas funcionales</h4>
+        <p>Diseño y ejecución de casos de prueba funcionales, de regresión, smoke y sanity testing con enfoque en calidad continua.</p>
+        <div class="tags"><span>Casos de prueba</span><span>Regresión</span><span>Smoke testing</span><span>Sanity testing</span><span>Pruebas manuales</span><span>Pruebas exploratorias</span><span>Pruebas de diseño</span><span>Clases de equivalencia</span><span>Valores límite</span><span>Multi-navegador</span><span>Pruebas móviles</span><span>Android Studio / ADB</span></div>
+      </div>
+
+      <div class="card skill c-green">
+        <div class="ico">🤖</div>
+        <h4>Automatización</h4>
+        <p>Frameworks de pruebas automatizadas para flujos críticos de negocio, web y móvil, con reportes y evidencias.</p>
+        <div class="tags"><span>Playwright</span><span>Cypress</span><span>Selenium</span><span>Appium</span><span>WebdriverIO</span><span>JMeter</span><span>pytest</span><span>Jest</span><span>TypeScript</span><span>Python</span><span>Java</span></div>
+      </div>
+
+      <div class="card skill c-orange">
+        <div class="ico">🔗</div>
+        <h4>API Testing</h4>
+        <p>Validación de endpoints REST y SOAP, contratos de API y pruebas de integración.</p>
+        <div class="tags"><span>Postman</span><span>REST API</span><span>SOAP</span><span>JSON</span><span>Swagger</span><span>apiDoc</span></div>
+      </div>
+
+      <div class="card skill c-purple">
+        <div class="ico">🐞</div>
+        <h4>Gestión de bugs</h4>
+        <p>Reporte detallado de defectos, seguimiento y trazabilidad con el equipo de desarrollo.</p>
+        <div class="tags"><span>Jira</span><span>Azure DevOps</span><span>Trello</span><span>GitHub</span><span>Confluence</span><span>GLPI</span></div>
+      </div>
+
+      <div class="card skill c-pink">
+        <div class="ico">📊</div>
+        <h4>Nivel de habilidades</h4>
+        <p>Autoevaluación actualizada 2026.</p>
+        <div class="levels">
+          <div class="level c-blue"><div class="row"><b>Pruebas manuales</b><span>90%</span></div><div class="bar"><i style="--w:90%"></i></div></div>
+          <div class="level c-orange"><div class="row"><b>Gestión de bugs</b><span>85%</span></div><div class="bar"><i style="--w:85%"></i></div></div>
+          <div class="level c-green"><div class="row"><b>API Testing</b><span>80%</span></div><div class="bar"><i style="--w:80%"></i></div></div>
+          <div class="level c-amber"><div class="row"><b>Calidad de datos</b><span>80%</span></div><div class="bar"><i style="--w:80%"></i></div></div>
+          <div class="level c-purple"><div class="row"><b>Automatización</b><span>75%</span></div><div class="bar"><i style="--w:75%"></i></div></div>
+        </div>
+      </div>
+
+      <div class="card skill c-teal">
+        <div class="ico">☁️</div>
+        <h4>Cloud & Salesforce</h4>
+        <p>Pruebas y gestión de datos en entornos AWS y sobre la plataforma Salesforce.</p>
+        <div class="tags"><span>AWS</span><span>Salesforce</span><span>Core Cloud</span><span>Financial Services Cloud</span><span>Lightning</span><span>LDS</span><span>Workbench</span><span>Data Loader</span></div>
+      </div>
+
+      <div class="card skill c-green">
+        <div class="ico">🔄</div>
+        <h4>Metodologías</h4>
+        <p>Entornos ágiles con enfoque en calidad continua y mejora de procesos.</p>
+        <div class="tags"><span>Scrum</span><span>Agile</span><span>Kanban</span><span>SDLC</span></div>
+      </div>
+
+      <div class="card skill c-blue">
+        <div class="ico">💻</div>
+        <h4>Desarrollo & front-end</h4>
+        <p>Herramientas de escritorio y web propias, desarrollo front-end complementario y reportes técnicos.</p>
+        <div class="tags"><span>JavaScript</span><span>TypeScript</span><span>Node.js</span><span>Python</span><span>Electron</span><span>Flask</span><span>HTML</span><span>CSS</span><span>Angular</span><span>Bootstrap</span><span>iReport</span></div>
+      </div>
+
+      <div class="card skill c-purple">
+        <div class="ico">🗄️</div>
+        <h4>Bases de datos & consola</h4>
+        <p>Validación de datos directamente en la base y análisis de logs en servidores remotos vía terminal.</p>
+        <div class="tags"><span>SQL</span><span>PostgreSQL</span><span>SQLite</span><span>JOIN / GROUP BY</span><span>Linux</span><span>Windows Server</span><span>Bash</span><span>SSH</span><span>Análisis de logs</span></div>
+      </div>
+
+      <div class="card skill c-amber">
+        <div class="ico">📈</div>
+        <h4>Datos y calidad</h4>
+        <p>Validación de migraciones masivas y análisis exploratorio automatizado sobre datasets estructurados.</p>
+        <div class="tags"><span>pandas</span><span>Pandera</span><span>Great Expectations</span><span>EDA automatizado</span><span>Parquet</span><span>Excel / CSV</span><span>openpyxl</span></div>
+      </div>
+
+      <div class="card skill c-red">
+        <div class="ico">🛠️</div>
+        <h4>Herramientas</h4>
+        <p>Control de versiones, contenedores, integración continua y empaquetado de aplicaciones.</p>
+        <div class="tags"><span>Git</span><span>GitHub</span><span>GitLab</span><span>Docker</span><span>CI/CD</span><span>electron-builder</span><span>PyInstaller</span><span>Documentación técnica</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= FORMACIÓN ================= -->
+<section id="formacion">
+  <div class="wrap">
+    <h2>Formación</h2>
+    <p class="sub">Estudios, cursos y certificaciones.</p>
+
+    <h3 class="subh">🎓 Estudios</h3>
+    <div class="edu">
+      <div class="card c-amber"><span class="year">2021</span><h4>Ingeniería de Sistemas</h4><span class="inst">Politécnico Costa Atlántica</span></div>
+      <div class="card c-blue"><span class="year">2014</span><h4>Tecnología en Sistemas</h4><span class="inst">Politécnico Costa Atlántica</span></div>
+      <div class="card c-green"><span class="year">2009</span><h4>Análisis y Programación de Sistemas</h4><span class="inst">Comfamiliar del Atlántico (SENA)</span></div>
+    </div>
+
+    <h3 class="subh">📜 Cursos y certificaciones</h3>
+    <div class="courses">
+
+      <div class="card course c-green">
+        <div class="top"><div class="ico">🧪</div><span class="when">En curso · 2026</span></div>
+        <h4>QA Engineer – Bootcamp de Pruebas de Software</h4>
+        <div class="inst">TripleTen</div>
+        <p>Formación intensiva en QA: pruebas funcionales, diseño de casos de prueba, clases de equivalencia, testing de APIs y metodologías ágiles aplicadas al aseguramiento de calidad.</p>
+        <div class="tags"><span>QA</span><span>Pruebas manuales</span><span>API Testing</span></div>
+      </div>
+
+      <div class="card course c-blue">
+        <div class="top"><div class="ico">🤖</div><span class="when">may. 2026</span></div>
+        <h4>Claude AI desde Cero: Tu Primer Paso en la IA [2026]</h4>
+        <div class="inst">Udemy</div>
+        <p>Conceptos básicos hasta funciones avanzadas como Projects, Artifacts y técnicas de prompting. Comparaciones con ChatGPT y Gemini.</p>
+        <div class="tags"><span>IA Generativa</span><span>Prompting</span></div>
+      </div>
+
+      <div class="card course c-green">
+        <div class="top"><div class="ico">🧫</div><span class="when">dic. 2025</span></div>
+        <h4>Software Testing desde 0: MasterClass todo en 1 (2025)</h4>
+        <div class="inst">Udemy</div>
+        <p>Formación integral en testing de software desde fundamentos hasta técnicas avanzadas de aseguramiento de calidad.</p>
+        <div class="tags"><span>QA</span><span>Testing</span><span>Ingeniería QA</span></div>
+      </div>
+
+      <div class="card course c-amber">
+        <div class="top"><div class="ico">🌐</div><span class="when">sept. 2025</span></div>
+        <h4>Liferay Portal: Gestión de Contenidos y Administración</h4>
+        <div class="inst">Udemy</div>
+        <p>Gestión y administración de portales empresariales con Liferay, incluyendo gestión de contenidos y configuración de plataformas.</p>
+        <div class="tags"><span>Liferay</span><span>CMS</span></div>
+      </div>
+
+      <div class="card course c-blue">
+        <div class="top"><div class="ico">🎭</div><span class="when">Curso</span></div>
+        <h4>Automatización de Test con Playwright</h4>
+        <div class="inst">Formación complementaria</div>
+        <p>Automatización end-to-end de aplicaciones web con Playwright: localizadores, fixtures, reportes y ejecución en CI.</p>
+        <div class="tags"><span>Playwright</span><span>Automatización</span><span>TypeScript</span></div>
+      </div>
+
+      <div class="card course c-green">
+        <div class="top"><div class="ico">🌲</div><span class="when">Curso</span></div>
+        <h4>Automatización de Pruebas UI con Cypress</h4>
+        <div class="inst">Formación complementaria</div>
+        <p>Pruebas de interfaz automatizadas con Cypress: comandos personalizados, intercepción de peticiones y buenas prácticas.</p>
+        <div class="tags"><span>Cypress</span><span>Automatización</span><span>JavaScript</span></div>
+      </div>
+
+      <div class="card course c-amber">
+        <div class="top"><div class="ico">🐍</div><span class="when">Curso</span></div>
+        <h4>Python para Ciencia de Datos</h4>
+        <div class="inst">Formación complementaria</div>
+        <p>Manipulación y análisis de datos con Python: pandas, limpieza, transformación y visualización de datasets.</p>
+        <div class="tags"><span>Python</span><span>pandas</span><span>Datos</span></div>
+      </div>
+
+      <div class="card course c-purple">
+        <div class="top"><div class="ico">🗄️</div><span class="when">Curso</span></div>
+        <h4>Bases de Datos con SQL</h4>
+        <div class="inst">Formación complementaria</div>
+        <p>Consultas, joins, agrupaciones y validación de datos directamente en bases de datos relacionales.</p>
+        <div class="tags"><span>SQL</span><span>Bases de datos</span></div>
+      </div>
+
+      <div class="card course c-purple">
+        <div class="top"><div class="ico">💻</div><span class="when">abr. 2023</span></div>
+        <h4>Introducción a la Programación Web</h4>
+        <div class="inst">CUN – Corporación Unificada Nacional</div>
+        <p>Fundamentos de programación web y desarrollo de aplicaciones orientadas al usuario.</p>
+        <div class="tags"><span>HTML</span><span>Programación web</span></div>
+      </div>
+
+      <div class="card course c-green">
+        <div class="top"><div class="ico">📱</div><span class="when">Curso</span></div>
+        <h4>Android Testing</h4>
+        <div class="inst">Formación complementaria</div>
+        <p>Pruebas funcionales y de compatibilidad en dispositivos Android, uso de Android Studio y ADB.</p>
+        <div class="tags"><span>Android</span><span>Pruebas móviles</span><span>ADB</span></div>
+      </div>
+
+      <div class="card course c-green">
+        <div class="top"><div class="ico">🧪</div><span class="when">2022</span></div>
+        <h4>Software Testing</h4>
+        <div class="inst">Udemy</div>
+        <p>Fundamentos de pruebas de software: niveles y tipos de prueba, diseño de casos, gestión de defectos y ciclo de vida del testing.</p>
+        <div class="tags"><span>QA</span><span>Fundamentos de pruebas</span></div>
+      </div>
+
+      <div class="card course c-orange">
+        <div class="top"><div class="ico">🏅</div><span class="when">ago. 2020</span></div>
+        <h4>Scrum Foundation Professional Certificate (SFPC)</h4>
+        <div class="inst">CertiProf</div>
+        <p>Certificación en fundamentos de Scrum y metodologías ágiles para la gestión de proyectos de software.</p>
+        <div class="tags"><span>Scrum</span><span>Agile</span></div>
+      </div>
+
+      <div class="card course c-orange">
+        <div class="top"><div class="ico">🏅</div><span class="when">ago. 2020</span></div>
+        <h4>Scrum Foundations Professional Certificate SFPC (Español)</h4>
+        <div class="inst">Soft One Group S.A.S</div>
+        <p>Certificación en fundamentos de Scrum otorgada por Soft One Group S.A.S.</p>
+        <div class="tags"><span>Scrum</span><span>SFPC</span></div>
+      </div>
+
+      <div class="card course c-red">
+        <div class="top"><div class="ico">☕</div><span class="when">ago. 2020</span></div>
+        <h4>Angular con un café</h4>
+        <div class="inst">LinkedIn Learning</div>
+        <p>Introducción práctica al framework Angular para el desarrollo de aplicaciones web modernas.</p>
+        <div class="tags"><span>Angular</span><span>Front-end</span></div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -295,8 +545,8 @@ HTML/Excel con las filas que fallan</code>
     <p class="sub">Abierto a oportunidades en QA, automatización y desarrollo de herramientas.</p>
     <div class="btns">
       <a class="btn primary" href="https://github.com/georgequintero1992" target="_blank" rel="noopener">GitHub</a>
-      <a class="btn" href="https://www.linkedin.com/in/TU-USUARIO" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn" href="mailto:TU-CORREO@ejemplo.com">Correo</a>
+      <a class="btn" href="https://www.linkedin.com/in/george-quintero-b40513219" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="mailto:george.quintero2014@gmail.com">Correo</a>
     </div>
   </div>
 </section>
