@@ -125,9 +125,36 @@
     @media (max-width: 560px) { .langs { grid-template-columns: 1fr; } }
 
     /* ---- Experiencia ---- */
-    .exp { display: grid; gap: 14px; }
-    .exp .card p { color: var(--muted); font-size: .95rem; }
-    .exp .card b { color: var(--text); }
+    .exp { display: grid; gap: 18px; --c: var(--accent2); }
+    .xp { position: relative; overflow: hidden; padding: 28px; }
+    .xp::before { content: ""; position: absolute; top: -70px; right: -70px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--c) 16%, transparent), transparent 70%); pointer-events: none; }
+    .xp .xh { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+    .xp .ico { width: 46px; height: 46px; flex: none; border-radius: 12px; display: grid; place-items: center; font-size: 1.4rem; background: color-mix(in srgb, var(--c) 16%, transparent); border: 1px solid color-mix(in srgb, var(--c) 35%, transparent); }
+    .xp h3 { font-size: 1.25rem; font-weight: 800; line-height: 1.25; }
+    .xp .rol { color: var(--c); font-weight: 700; font-size: .8rem; letter-spacing: .5px; text-transform: uppercase; }
+    .xp p { color: var(--muted); font-size: .95rem; margin-bottom: 12px; }
+    .xp p b { color: var(--text); }
+    .xp .sub3 { font-size: .78rem; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); margin: 18px 0 10px; }
+    .xp .mini { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .xp .mini div { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; font-size: .88rem; color: var(--muted); }
+    .xp .mini div b { display: block; color: var(--text); margin-bottom: 4px; }
+    .xp .mini div em { font-style: normal; color: var(--c); font-weight: 700; }
+    .xp .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 16px; }
+    .xp .tags span { font-size: .76rem; font-weight: 600; padding: 4px 11px; border-radius: 20px; color: var(--c); background: color-mix(in srgb, var(--c) 12%, transparent); border: 1px solid color-mix(in srgb, var(--c) 30%, transparent); }
+    .xp .tools { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .xp .tools > a, .xp .tools > div { display: flex; gap: 12px; align-items: flex-start; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; color: var(--muted); font-size: .88rem; transition: border-color .15s; }
+    .xp .tools > a:hover { border-color: var(--c); text-decoration: none; }
+    .xp .tools b { display: block; color: var(--text); margin-bottom: 2px; }
+    .xp .tools .ti { font-size: 1.3rem; flex: none; }
+    .techtbl { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    .techtbl th, .techtbl td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .techtbl th { color: var(--muted); font-size: .74rem; letter-spacing: 1.2px; text-transform: uppercase; font-weight: 800; }
+    .techtbl td:first-child { color: var(--text); font-weight: 700; white-space: nowrap; width: 160px; }
+    .techtbl td:last-child { color: var(--muted); }
+    .techtbl tr:last-child td { border-bottom: none; }
+    .exp .card.small p { color: var(--muted); font-size: .95rem; }
+    .exp .card.small b { color: var(--text); }
+    @media (max-width: 760px) { .xp .mini, .xp .tools { grid-template-columns: 1fr; } .techtbl td:first-child { width: auto; white-space: normal; } }
 
     /* ---- Contacto ---- */
     #contacto { text-align: center; }
@@ -379,14 +406,14 @@ HTML/Excel con las filas que fallan</code>
         <div class="ico">🤖</div>
         <h4>Automatización</h4>
         <p>Frameworks de pruebas automatizadas para flujos críticos de negocio, web y móvil, con reportes y evidencias.</p>
-        <div class="tags"><span>Playwright</span><span>Cypress</span><span>Selenium</span><span>Appium</span><span>WebdriverIO</span><span>JMeter</span><span>pytest</span><span>Jest</span><span>TypeScript</span><span>Python</span><span>Java</span></div>
+        <div class="tags"><span>Playwright</span><span>Cypress</span><span>Selenium</span><span>Appium</span><span>WebdriverIO</span><span>Serenity BDD</span><span>Karate DSL</span><span>JMeter</span><span>pytest</span><span>Jest</span><span>TypeScript</span><span>Python</span><span>Java</span></div>
       </div>
 
       <div class="card skill c-orange">
         <div class="ico">🔗</div>
         <h4>API Testing</h4>
         <p>Validación de endpoints REST y SOAP, contratos de API y pruebas de integración.</p>
-        <div class="tags"><span>Postman</span><span>REST API</span><span>SOAP</span><span>JSON</span><span>Swagger</span><span>apiDoc</span></div>
+        <div class="tags"><span>Postman</span><span>SoapUI</span><span>RestAssured</span><span>REST API</span><span>SOAP</span><span>IBM ACE</span><span>JSON</span><span>Swagger</span><span>apiDoc</span></div>
       </div>
 
       <div class="card skill c-purple">
@@ -413,7 +440,7 @@ HTML/Excel con las filas que fallan</code>
         <div class="ico">☁️</div>
         <h4>Cloud & Salesforce</h4>
         <p>Pruebas y gestión de datos en entornos AWS y sobre la plataforma Salesforce.</p>
-        <div class="tags"><span>AWS</span><span>Salesforce</span><span>Core Cloud</span><span>Financial Services Cloud</span><span>Lightning</span><span>LDS</span><span>Workbench</span><span>Data Loader</span></div>
+        <div class="tags"><span>AWS</span><span>S3</span><span>Azure</span><span>Salesforce</span><span>Core Cloud</span><span>Financial Services Cloud</span><span>Lightning</span><span>LDS</span><span>Workbench</span><span>Data Loader</span></div>
       </div>
 
       <div class="card skill c-green">
@@ -434,7 +461,7 @@ HTML/Excel con las filas que fallan</code>
         <div class="ico">🗄️</div>
         <h4>Bases de datos & consola</h4>
         <p>Validación de datos directamente en la base y análisis de logs en servidores remotos vía terminal.</p>
-        <div class="tags"><span>SQL</span><span>PostgreSQL</span><span>SQLite</span><span>JOIN / GROUP BY</span><span>Linux</span><span>Windows Server</span><span>Bash</span><span>SSH</span><span>Análisis de logs</span></div>
+        <div class="tags"><span>SQL</span><span>PostgreSQL</span><span>SQL Server</span><span>Sybase ASE</span><span>MongoDB</span><span>SQLite</span><span>JOIN / GROUP BY</span><span>Linux</span><span>Windows Server</span><span>Bash</span><span>SSH</span><span>Análisis de logs</span></div>
       </div>
 
       <div class="card skill c-amber">
@@ -448,7 +475,7 @@ HTML/Excel con las filas que fallan</code>
         <div class="ico">🛠️</div>
         <h4>Herramientas</h4>
         <p>Control de versiones, contenedores, integración continua y empaquetado de aplicaciones.</p>
-        <div class="tags"><span>Git</span><span>GitHub</span><span>GitLab</span><span>Docker</span><span>CI/CD</span><span>electron-builder</span><span>PyInstaller</span><span>Documentación técnica</span></div>
+        <div class="tags"><span>Git</span><span>GitHub</span><span>GitLab</span><span>Docker</span><span>CI/CD</span><span>Vite</span><span>ReportLab</span><span>electron-builder</span><span>PyInstaller</span><span>Claude / LLMs</span><span>Documentación técnica</span></div>
       </div>
 
     </div>
@@ -615,10 +642,67 @@ HTML/Excel con las filas que fallan</code>
 <section id="experiencia">
   <div class="wrap">
     <h2>Experiencia destacada</h2>
-    <p class="sub">Trabajo realizado para empresas; el código pertenece a ellas y no se publica.</p>
+    <p class="sub">Trabajo realizado para clientes; el código pertenece a ellos y no se publica. Las herramientas propias que nacieron de estos proyectos sí están en GitHub.</p>
     <div class="exp">
-      <div class="card"><p><b>Framework de pruebas end-to-end con Playwright</b> — diseño y mantenimiento de una suite de automatización en TypeScript para una plataforma web de salud (más de 270 iteraciones): estructura por páginas, reporter personalizado, integración con API y ejecución en CI.</p></div>
-      <div class="card"><p><b>Q-EDA, análisis exploratorio y calidad de datos</b> — framework configurable en Python para ejecutar EDA automatizado y evaluación de calidad sobre datasets estructurados, con pruebas, Docker y reportes, para un equipo de ciencia de datos.</p></div>
+
+      <!-- Banca y finanzas -->
+      <article class="card xp c-blue">
+        <div class="xh"><div class="ico">🏦</div><div><div class="rol">QA · Plataformas bancarias y financieras</div><h3>Pruebas sobre servicios de remesas, cobros y transacciones digitales</h3></div></div>
+        <p>Ejecución de pruebas funcionales, de integración y de regresión sobre servicios <b>REST y SOAP</b> en un broker de mensajería empresarial (<b>IBM ACE</b>). Validación de flujos críticos como envío de remesas, cobro, historial de transacciones y actualización de solicitudes. Diseño de escenarios end-to-end cubriendo casos positivos, negativos y de borde sobre servicios que interactúan con bases de datos <b>Sybase ASE</b> y <b>SQL Server</b>.</p>
+        <p><b>Validación de funcionalidades de IA</b> integradas a la plataforma: bot conversacional en WhatsApp para envío de remesas, motor antifraude (detección de comportamiento anómalo en transacciones digitales) y módulo de biometría con detección de ataques de inyección (<i>Injection Attack Detection</i>).</p>
+        <p>Desarrollo de una aplicación propia de <b>record &amp; playback móvil (MobiFlow)</b> sobre Appium, que permite grabar y reproducir flujos de prueba en dispositivos reales sin escribir código, reduciendo el tiempo de diseño de casos manuales en entornos móviles.</p>
+        <div class="tags"><span>REST / SOAP</span><span>IBM ACE</span><span>Postman</span><span>SoapUI</span><span>Sybase ASE</span><span>SQL Server</span><span>Appium</span><span>IA antifraude</span><span>Biometría</span><span>WhatsApp bot</span></div>
+      </article>
+
+      <!-- Migración tributaria -->
+      <article class="card xp c-amber">
+        <div class="xh"><div class="ico">🗂️</div><div><div class="rol">QA · Validación de migración de datos</div><h3>Plataforma tributaria municipal: legados → MongoDB</h3></div></div>
+        <p>Validación QA de migraciones masivas de datos tributarios (predial, circulación y tránsito, multas) desde sistemas legados hacia <b>MongoDB</b>. Cruces entre colecciones Mongo, matrices Excel y bases de datos relacionales para detectar inconsistencias de saldo, fechas, estados y documentos.</p>
+        <div class="sub3">Proyectos trabajados</div>
+        <div class="mini">
+          <div><b>Predial</b>Validación de deuda migrada con <em>más de 67.000 registros</em>, reglas de negocio aplicadas por lote y cruce contra colecciones de expedientes en Camunda.</div>
+          <div><b>Circulación y Tránsito</b>Validación de colecciones <em>messages</em> y <em>dossiers</em>, migración de documentos PDF a S3 y cruce contra el informe de expedientes del sistema destino.</div>
+          <div><b>Multas de Tránsito</b>Validación unificada de 4 matrices (<em>más de 16.000 registros</em>), expedientes y actividades (<em>más de 107.000 registros</em>); identificación de hallazgos transversales.</div>
+        </div>
+        <div class="tags"><span>MongoDB</span><span>Camunda</span><span>AWS S3</span><span>PostgreSQL</span><span>Excel / OpenPyXL</span><span>Pandera</span><span>Great Expectations</span><span>Python</span></div>
+      </article>
+
+      <!-- Herramientas desarrolladas -->
+      <article class="card xp c-green">
+        <div class="xh"><div class="ico">🧰</div><div><div class="rol">Herramientas propias nacidas en estos proyectos</div><h3>Automatizar lo repetitivo del trabajo de QA</h3></div></div>
+        <div class="tools">
+          <a href="https://github.com/georgequintero1992/Software-Regresion" target="_blank" rel="noopener"><span class="ti">📱</span><div><b>MobiFlow</b>App de record &amp; playback móvil construida sobre Appium para automatizar flujos en dispositivos reales. Ver en GitHub →</div></a>
+          <a href="https://github.com/georgequintero1992/validador-datos-pandera" target="_blank" rel="noopener"><span class="ti">✅</span><div><b>Validador de datos (Pandera)</b>Reglas en lenguaje natural convertidas a esquemas Pandera, con reporte de errores fila a fila. Ver en GitHub →</div></a>
+          <div><span class="ti">🔍</span><div><b>silin-qa-validator</b>Validación automática de cruces Mongo vs. matriz Excel en migraciones tributarias.</div></div>
+          <div><span class="ti">📄</span><div><b>Generador de manual de pruebas</b>Script Python que convierte cualquier guion Excel en un manual de usuario PDF paso a paso (ReportLab).</div></div>
+          <div><span class="ti">📡</span><div><b>Visor de logs local</b>Herramienta Node.js/Vite para visualizar logs de validación en tiempo real desde el entorno local.</div></div>
+          <a href="https://github.com/georgequintero1992/lightshot-desktop" target="_blank" rel="noopener"><span class="ti">📸</span><div><b>Lightshot Desktop</b>Captura, anotación y grabación de pantalla para evidencias QA. Ver en GitHub →</div></a>
+        </div>
+      </article>
+
+      <!-- Otros -->
+      <div class="card small"><p><b>Framework de pruebas end-to-end con Playwright</b> — diseño y mantenimiento de una suite de automatización en TypeScript para una plataforma web de salud (más de 270 iteraciones): estructura por páginas, reporter personalizado, integración con API y ejecución en CI.</p></div>
+      <div class="card small"><p><b>Q-EDA, análisis exploratorio y calidad de datos</b> — framework configurable en Python para ejecutar EDA automatizado y evaluación de calidad sobre datasets estructurados, con pruebas, Docker y reportes, para un equipo de ciencia de datos.</p></div>
+
+      <!-- Tecnologías -->
+      <article class="card xp c-purple">
+        <div class="xh"><div class="ico">🧩</div><div><div class="rol">Stack</div><h3>Tecnologías utilizadas</h3></div></div>
+        <table class="techtbl">
+          <thead><tr><th>Categoría</th><th>Herramientas</th></tr></thead>
+          <tbody>
+            <tr><td>Automatización</td><td>Playwright, Cypress, Selenium, Appium, Serenity BDD, Karate DSL</td></tr>
+            <tr><td>Lenguajes</td><td>Python, TypeScript, JavaScript, Java, SQL</td></tr>
+            <tr><td>APIs</td><td>Postman, SoapUI, RestAssured, IBM ACE</td></tr>
+            <tr><td>Bases de datos</td><td>MongoDB, PostgreSQL, SQL Server, Sybase ASE</td></tr>
+            <tr><td>Gestión</td><td>Jira, Azure DevOps, Confluence</td></tr>
+            <tr><td>Cloud</td><td>AWS (S3), Azure</td></tr>
+            <tr><td>Calidad de datos</td><td>Great Expectations, Pandera</td></tr>
+            <tr><td>IA</td><td>Claude (LLMs), prompting estructurado para QA</td></tr>
+            <tr><td>Otras</td><td>Git, Node.js, Vite, Excel/OpenPyXL, ReportLab</td></tr>
+          </tbody>
+        </table>
+      </article>
+
     </div>
   </div>
 </section>
