@@ -78,9 +78,22 @@
     .hero-photo::after { content: ""; position: absolute; inset: -14px; border-radius: 50%; border: 1px dashed color-mix(in srgb, var(--accent2) 60%, transparent); animation: spin 40s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
     .hero-photo .badge { position: absolute; bottom: 10px; right: -6px; background: var(--card); border: 1px solid var(--border); border-radius: 30px; padding: 6px 14px; font-size: .8rem; font-weight: 700; color: #4ade80; box-shadow: 0 6px 18px rgba(0,0,0,.3); white-space: nowrap; }
-    .stats { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--border); }
-    .stats div b { display: block; font-size: 1.5rem; font-weight: 800; color: var(--accent2); line-height: 1.1; }
-    .stats div span { color: var(--muted); font-size: .85rem; }
+    .where { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--border); }
+    .where span { display: inline-flex; align-items: center; gap: 7px; font-size: .84rem; font-weight: 600; color: var(--text); background: var(--card); border: 1px solid var(--border); border-radius: 30px; padding: 7px 14px; }
+    .where span i { font-style: normal; }
+    .where span.ok { color: #4ade80; border-color: color-mix(in srgb, #4ade80 40%, var(--border)); }
+
+    /* ---- Impacto ---- */
+    #impacto { padding: 0 0 8px; border-top: none; }
+    .impact { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .impact .card { position: relative; overflow: hidden; padding: 22px 22px 20px; border-top: 3px solid var(--c); }
+    .impact .card::before { content: ""; position: absolute; top: -50px; right: -50px; width: 140px; height: 140px; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--c) 18%, transparent), transparent 70%); pointer-events: none; }
+    .impact .n { font-size: 2.1rem; font-weight: 800; line-height: 1; color: var(--c); letter-spacing: -1px; margin-bottom: 8px; white-space: nowrap; }
+    .impact .n small { font-size: 1.1rem; font-weight: 700; letter-spacing: 0; color: var(--muted); }
+    .impact b { display: block; font-size: .95rem; margin-bottom: 4px; }
+    .impact p { color: var(--muted); font-size: .84rem; margin: 0; }
+    @media (max-width: 860px) { .impact { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 460px) { .impact { grid-template-columns: 1fr; } }
     @media (max-width: 800px) { header .wrap { grid-template-columns: 1fr; } .hero-photo { order: -1; } .hero-photo img { width: 200px; height: 200px; } }
     header .tag { display: inline-block; color: var(--accent); font-weight: 700; letter-spacing: 2px; font-size: .78rem; text-transform: uppercase; margin-bottom: 14px; }
     header h1 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); font-weight: 800; line-height: 1.15; letter-spacing: -.5px; margin-bottom: 16px; }
@@ -294,7 +307,7 @@
 <header>
   <div class="wrap">
     <div>
-      <span class="tag">QA Engineer · Automatización</span>
+      <span class="tag">QA Engineer · +6 años · Automatización y calidad de datos</span>
       <h1>Hola, soy <em>George Quintero</em>.<br>Automatizo pruebas y construyo herramientas que resuelven problemas reales.</h1>
       <p>Ingeniero de calidad de software con enfoque en automatización: frameworks de pruebas end-to-end, aplicaciones de escritorio y validación de datos. Me gusta entregar software que la gente usa todos los días, probado y documentado.</p>
       <div class="btns">
@@ -302,11 +315,11 @@
         <a class="btn" href="George-Quintero-CV.pdf" download="George Quintero - CV QA.pdf">⬇ Descargar CV</a>
         <a class="btn" href="#contacto">Contacto</a>
       </div>
-      <div class="stats">
-        <div><b>+6</b><span>años en QA</span></div>
-        <div><b>7</b><span>herramientas propias</span></div>
-        <div><b>+100k</b><span>registros validados</span></div>
-        <div><b>3</b><span>frameworks de pruebas</span></div>
+      <div class="where">
+        <span><i>📍</i> Barranquilla, Colombia</span>
+        <span><i>🌐</i> Remoto · híbrido · presencial</span>
+        <span><i>🕓</i> GMT-5 (hora Colombia)</span>
+        <span class="ok"><i>●</i> Disponible de inmediato</span>
       </div>
     </div>
     <div class="hero-photo">
@@ -315,6 +328,18 @@
     </div>
   </div>
 </header>
+
+<!-- ================= IMPACTO ================= -->
+<section id="impacto" aria-label="Resultados">
+  <div class="wrap">
+    <div class="impact">
+      <div class="card c-green"><div class="n">24 h <small>→</small> 1 h</div><b>Tiempo de regresión</b><p>Regresiones automatizadas con Playwright que redujeron cada ciclo de validación de un día a una hora.</p></div>
+      <div class="card c-blue"><div class="n">100 %</div><b>Cobertura funcional</b><p>Estrategia de pruebas end-to-end en TypeScript que llevó la cobertura de los flujos críticos al total.</p></div>
+      <div class="card c-purple"><div class="n">−80 %</div><b>Tiempo de diseño de casos</b><p>Generación de casos de prueba y análisis de hallazgos asistidos con IA generativa (prompting estructurado).</p></div>
+      <div class="card c-amber"><div class="n">+100 k</div><b>Registros validados</b><p>Migraciones tributarias cruzadas contra MongoDB, Excel y bases relacionales con Pandera y Great Expectations.</p></div>
+    </div>
+  </div>
+</section>
 
 <!-- ================= PROYECTOS ================= -->
 <section id="proyectos">
@@ -799,7 +824,7 @@
         <div>
           <div class="who">
             <img class="avatar" src="img/foto.jpg" alt="George Quintero" />
-            <div><b>George Quintero</b><small>QA Engineer · Automatización y calidad de datos</small><span class="dot">● Disponible</span></div>
+            <div><b>George Quintero</b><small>QA Engineer · Automatización y calidad de datos</small><small>📍 Barranquilla, Colombia · Remoto / híbrido · GMT-5</small><span class="dot">● Disponible de inmediato</span></div>
           </div>
           <div class="lbl">Contacto</div>
           <div class="rows">
@@ -840,7 +865,7 @@
       secs.forEach(function (sec) { io.observe(sec); });
       // ---- Aparición suave
       var rv = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); rv.unobserve(e.target); } }); }, { threshold: .08 });
-      document.querySelectorAll('.proyecto, .skill, .course, .edu .card, .lang, .xp, .cform, .vcard').forEach(function (el) { el.classList.add('reveal'); rv.observe(el); });
+      document.querySelectorAll('.impact .card, .proyecto, .skill, .course, .edu .card, .lang, .xp, .cform, .vcard').forEach(function (el) { el.classList.add('reveal'); rv.observe(el); });
     }
     // ---- Lightbox
     var lb = document.getElementById('lb'), lbImg = lb.querySelector('img'), lbCap = lb.querySelector('figcaption');
