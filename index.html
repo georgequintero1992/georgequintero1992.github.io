@@ -130,6 +130,15 @@
     .info p { color: var(--muted); margin-bottom: 12px; }
     .info ul { color: var(--muted); margin: 0 0 14px 18px; font-size: .95rem; }
     .info ul li { margin-bottom: 4px; }
+    .case { display: grid; gap: 10px; margin-bottom: 16px; }
+    .case > div { display: grid; grid-template-columns: 86px 1fr; gap: 12px; font-size: .92rem; color: var(--muted); line-height: 1.55; }
+    .case > div b { font-size: .68rem; letter-spacing: 1.3px; text-transform: uppercase; font-weight: 800; padding-top: 4px; }
+    .case .pr b { color: #f87171; } .case .so b { color: var(--accent2); } .case .re b { color: #4ade80; }
+    .case .re { color: var(--text); background: color-mix(in srgb, #4ade80 7%, transparent); border: 1px solid color-mix(in srgb, #4ade80 25%, transparent); border-radius: 10px; padding: 10px 12px; margin-left: -12px; }
+    .case .re b { padding-left: 12px; }
+    .case strong { color: var(--text); font-weight: 600; }
+    .case code { font-size: .82em; background: var(--bg); padding: 1px 6px; border-radius: 5px; color: var(--accent2); }
+    @media (max-width: 460px) { .case > div { grid-template-columns: 1fr; gap: 2px; } .case .re { margin-left: 0; } .case .re b { padding-left: 0; } }
     .tech { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
     .tech span { font-size: .76rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; background: color-mix(in srgb, var(--accent2) 14%, transparent); color: var(--accent2); }
     .links { display: flex; gap: 14px; flex-wrap: wrap; font-weight: 700; font-size: .92rem; }
@@ -353,12 +362,11 @@
       <div class="info">
         <h3>MobiFlow</h3>
         <div class="rol">Grabador y reproductor de pruebas móviles</div>
-        <p>Aplicación de escritorio que muestra el espejo de un dispositivo Android en vivo: se graba interactuando sobre la pantalla y se obtiene una lista de pasos con localizadores estables, reproducción con resaltado paso a paso y exportación a código.</p>
-        <ul>
-          <li>Motor Appium 3 (UiAutomator2), inspector de elementos y captura de evidencias</li>
-          <li>Genera pruebas TypeScript + WebdriverIO listas para integrar en CI</li>
-          <li>Arquitectura agnóstica de plataforma, preparada para iOS (XCUITest)</li>
-        </ul>
+        <div class="case">
+          <div class="pr"><b>Problema</b><span>Diseñar casos de prueba para apps móviles era lento y frágil: capturar los toques del teléfono solo entrega coordenadas que se rompen al cambiar el layout o la resolución, y automatizar exigía escribir código Appium a mano.</span></div>
+          <div class="so"><b>Solución</b><span>Aplicación de escritorio con <strong>espejo del dispositivo en vivo</strong>: se graba interactuando sobre el espejo y cada acción se convierte en un paso con <strong>localizador estable</strong> (accessibility id, resource-id, UiAutomator) y alternativas ordenadas por confianza. Reproducción con resaltado paso a paso, inspector de elementos, evidencias PNG, informe HTML y exportación a <strong>TypeScript + WebdriverIO</strong>. Motor Appium 3, preparado para iOS (XCUITest).</span></div>
+          <div class="re"><b>Resultado</b><span>Casos de prueba móviles sin escribir código, con localizadores que sobreviven a cambios de diseño y un <code>.spec.ts</code> listo para integrar en CI. Menos tiempo de diseño manual en entornos móviles.</span></div>
+        </div>
         <div class="tech"><span>Electron</span><span>TypeScript</span><span>Appium</span><span>WebdriverIO</span><span>Android</span></div>
         <div class="links"><span class="priv">🔒 Repositorio privado. Demostración y código disponibles en entrevista.</span></div>
       </div>
@@ -375,13 +383,11 @@
       <div class="info">
         <h3>Lightshot Desktop</h3>
         <div class="rol">Captura, anotación y grabación de pantalla para evidencias QA</div>
-        <p>Al abrirla congela la pantalla y muestra una barra de herramientas: se recorta la zona, se anota y el resultado queda copiado al portapapeles listo para pegar en un reporte o un ticket. Hecha para acelerar la documentación de pruebas.</p>
-        <ul>
-          <li>Rectángulo, elipse, flecha, texto editable, resaltado y <b>numeración de pasos</b></li>
-          <li>Desenfoque para ocultar datos sensibles antes de compartir</li>
-          <li>Grabación de pantalla exportada a <b>MKV</b> (remux con FFmpeg, sin recodificar)</li>
-          <li>Ventana transparente sin marco, IPC aislado (contextIsolation, sin nodeIntegration)</li>
-        </ul>
+        <div class="case">
+          <div class="pr"><b>Problema</b><span>Documentar una evidencia de prueba implicaba capturar, abrir un editor, anotar, tapar datos sensibles, guardar y pegar: varios minutos por cada hallazgo.</span></div>
+          <div class="so"><b>Solución</b><span>Al abrirla congela la pantalla y muestra una barra de anotación: rectángulo, elipse, flecha, texto editable, resaltado, <strong>numeración de pasos</strong> y <strong>desenfoque</strong> para datos sensibles. Cada cambio se copia al portapapeles; guarda PNG/JPG y graba pantalla a <strong>MKV</strong> (remux con FFmpeg, sin recodificar). Ventana transparente sin marco, IPC aislado.</span></div>
+          <div class="re"><b>Resultado</b><span>Evidencia lista para pegar en Jira o en un ticket en segundos, con los datos sensibles ocultos antes de compartir.</span></div>
+        </div>
         <div class="tech"><span>Electron</span><span>JavaScript</span><span>Canvas API</span><span>MediaRecorder</span><span>FFmpeg</span></div>
         <div class="links"><span class="priv">🔒 Repositorio privado. Demostración y código disponibles en entrevista.</span></div>
       </div>
@@ -393,14 +399,11 @@
       <div class="info">
         <h3>Contabilidad IFTAE</h3>
         <div class="rol">Sistema contable de escritorio para una institución educativa</div>
-        <p>Aplicación instalable, sin internet y sin dependencias externas, que lleva pagos a empleados, ingresos, arqueos de caja e informes. En uso real en el Instituto de Formación Técnica Albert Einstein.</p>
-        <ul>
-          <li>Base SQLite local con <b>respaldo automático</b> tras cada movimiento y historial fechado</li>
-          <li>Anulación de movimientos con trazabilidad, recibos numerados, cierre de mes y bitácora de auditoría</li>
-          <li>Contraseñas con PBKDF2 y permisos verificados en el proceso principal</li>
-          <li><b>Dos compilaciones</b>: Windows 10/11 (SQLite nativo) y Windows 7 de 32 bits (SQLite en WebAssembly), con el mismo archivo de datos</li>
-          <li>Suite de pruebas automatizadas y manual de usuario ilustrado</li>
-        </ul>
+        <div class="case">
+          <div class="pr"><b>Problema</b><span>Una institución educativa llevaba pagos a empleados, ingresos y arqueos en hojas sueltas, sin trazabilidad ni respaldos, en equipos antiguos con Windows 7 y sin internet.</span></div>
+          <div class="so"><b>Solución</b><span>Aplicación instalable con base <strong>SQLite local</strong> y <strong>respaldo automático</strong> tras cada movimiento; recibos numerados, anulación con trazabilidad, cierre de mes, bitácora de auditoría y contraseñas con PBKDF2. <strong>Dos compilaciones</strong>: Windows 10/11 (SQLite nativo) y Windows 7 de 32 bits (SQLite en WebAssembly) sobre el mismo archivo de datos. Suite de pruebas automatizadas y manual de usuario ilustrado.</span></div>
+          <div class="re"><b>Resultado</b><span>En uso real en el Instituto de Formación Técnica Albert Einstein: sin dependencia de internet, historial auditable y recuperación ante fallos con un clic.</span></div>
+        </div>
         <div class="tech"><span>Electron</span><span>JavaScript</span><span>SQLite</span><span>Node.js</span><span>Chart.js</span></div>
         <div class="links"><span class="priv">🔒 Repositorio privado. Demostración y código disponibles en entrevista.</span></div>
       </div>
@@ -419,7 +422,11 @@
       <div class="info">
         <h3>Compresor de PDF</h3>
         <div class="rol">Herramienta de escritorio</div>
-        <p>Utilidad para reducir el tamaño de archivos PDF con distintos niveles de calidad, pensada para quien tiene que enviar documentos por correo con límite de tamaño y no quiere instalar nada complicado.</p>
+        <div class="case">
+          <div class="pr"><b>Problema</b><span>Enviar documentos por correo con límite de tamaño obligaba a subir PDFs a servicios web de terceros o a instalar herramientas complicadas.</span></div>
+          <div class="so"><b>Solución</b><span>Utilidad de escritorio sobre <strong>Ghostscript</strong> con perfiles de calidad, DPI configurable y modo de color; todo el procesamiento ocurre en el equipo. Empaquetada con Electron Forge.</span></div>
+          <div class="re"><b>Resultado</b><span>PDFs reducidos en un clic sin que los documentos salgan del computador.</span></div>
+        </div>
         <div class="tech"><span>Electron</span><span>Node.js</span><span>Ghostscript</span><span>Electron Forge</span></div>
         <div class="links"><span class="priv">🔒 Repositorio privado. Demostración y código disponibles en entrevista.</span></div>
       </div>
@@ -431,11 +438,11 @@
       <div class="info">
         <h3>Automatización asistida del formulario DS-160</h3>
         <div class="rol">Automatización de procesos con Python</div>
-        <p>Rellena el formulario de solicitud de visa americana a partir de una hoja de Excel, campo por campo, reduciendo un proceso de más de una hora de digitación a minutos de revisión. Diseñado para que la persona conserve el control: el CAPTCHA, la foto y el envío se hacen a mano.</p>
-        <ul>
-          <li>Interfaz de escritorio sencilla y empaquetado como ejecutable</li>
-          <li>Manejo de datos personales sensibles: el código es privado</li>
-        </ul>
+        <div class="case">
+          <div class="pr"><b>Problema</b><span>Llenar la solicitud de visa americana tomaba más de una hora de digitación por solicitante, con errores de transcripción y sin forma de retomar si algo fallaba.</span></div>
+          <div class="so"><b>Solución</b><span>Aplicación Python que lee un Excel por solicitante, <strong>valida los datos antes de empezar</strong> y llena el formulario sección por sección (18 secciones) con reanudación de solicitudes existentes y registro en vivo. El CAPTCHA, la foto, la revisión y el envío se hacen siempre a mano. Empaquetada como ejecutable con instalador.</span></div>
+          <div class="re"><b>Resultado</b><span>De más de una hora a minutos de revisión por solicitante, con la persona en control de los pasos sensibles. Código privado por manejar datos personales.</span></div>
+        </div>
         <div class="tech"><span>Python</span><span>Selenium</span><span>openpyxl</span><span>PyInstaller</span></div>
         <div class="links"><span class="priv">🔒 Repositorio privado (datos personales). Demostración disponible en entrevista.</span></div>
       </div>
@@ -447,13 +454,11 @@
       <div class="info">
         <h3>Validación de datos para migraciones</h3>
         <div class="rol">Calidad de datos · Python</div>
-        <p>Sistema que valida archivos CSV/Excel antes de una migración masiva: las reglas se escriben en lenguaje natural y se convierten en esquemas de Pandera; el resultado es un reporte navegable con cada error, su fila y su causa.</p>
-        <ul>
-          <li>Reglas editables sin tocar código: tipo, regex, nulos, unicidad, longitud, rangos y reglas condicionales</li>
-          <li>Carga de CSV/Excel con detección de codificación, edición inline de los datos y revalidación</li>
-          <li>Reporte HTML con filtros, exportación a Excel/CSV y manual del sistema generado en Word</li>
-          <li>Usado sobre bases de decenas de miles de registros (comparendos y acuerdos de pago); los datos de cliente quedan fuera del repositorio</li>
-        </ul>
+        <div class="case">
+          <div class="pr"><b>Problema</b><span>Antes de una migración masiva había que revisar decenas de miles de registros a mano en Excel; las reglas de negocio vivían en documentos que cambiaban y los errores no se podían rastrear hasta la fila.</span></div>
+          <div class="so"><b>Solución</b><span>Las reglas se escriben en <strong>lenguaje natural</strong> y se convierten en esquemas de <strong>Pandera</strong> (tipo, regex, nulos, unicidad, longitud, rangos, reglas condicionales). Carga de CSV/Excel con detección de codificación, edición inline y revalidación; reporte HTML con score y filtros, exportación a Excel/CSV y manual del sistema generado en Word.</span></div>
+          <div class="re"><b>Resultado</b><span>Cada hallazgo con su columna, valor y regla; reglas editables sin tocar código. Usado sobre <strong>más de 100.000 registros</strong> (predial, tránsito, multas y acuerdos de pago).</span></div>
+        </div>
         <div class="tech"><span>Python</span><span>Pandera</span><span>pandas</span><span>Flask</span><span>openpyxl</span></div>
         <div class="links"><span class="priv">🔒 Repositorio privado. Demostración y código disponibles en entrevista.</span></div>
       </div>
