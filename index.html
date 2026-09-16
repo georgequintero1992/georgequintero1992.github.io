@@ -377,6 +377,27 @@
       <div class="media"><img src="img/mobiflow-codigo.jpg" alt="Código TypeScript + WebdriverIO generado por MobiFlow a partir de los pasos grabados" loading="lazy" /></div>
     </article>
 
+    <!-- LOGSPRO -->
+    <article class="proyecto">
+      <div class="media"><img src="img/logspro-resumen.jpg" alt="LOGSPRO: resumen de un log de banca móvil con totales, errores y trazas sin respuesta" loading="lazy" /></div>
+      <div class="info">
+        <h3>LOGSPRO · Log Analyzer QA</h3>
+        <div class="rol">Análisis de logs de banca móvil</div>
+        <div class="case">
+          <div class="pr"><b>Problema</b><span>Revisar los logs de una plataforma de banca móvil para reproducir un defecto significaba abrir archivos de miles de líneas en un editor de texto y buscar a mano el INPUT y el OUTPUT de cada transacción.</span></div>
+          <div class="so"><b>Solución</b><span>Aplicación de escritorio que lee archivos o carpetas de logs (detección de codificación UTF-8/UTF-16/Latin-1), <strong>agrupa INPUT y OUTPUT por ID de traza</strong> y clasifica cada una como exitosa, con error o <strong>sin respuesta</strong>. Vistas de tabla, trazas, métodos y resumen; filtros por método, dirección, estado y usuario; gráficas en ventana aparte; exportación a <strong>Excel</strong> (resumen, detalle, errores) y <strong>PDF</strong>.</span></div>
+          <div class="re"><b>Resultado</b><span>De minutos buscando en texto plano a segundos: el último error, los métodos con más fallos y las trazas huérfanas aparecen de inmediato, y el reporte sale listo para adjuntar al ticket.</span></div>
+        </div>
+        <div class="tech"><span>Electron</span><span>JavaScript</span><span>Regex</span><span>SheetJS</span><span>electron-builder</span></div>
+        <div class="links"><span class="priv">🔒 Repositorio privado. Demostración y código disponibles en entrevista.</span></div>
+      </div>
+    </article>
+
+    <!-- Galería LOGSPRO -->
+    <article class="proyecto" style="grid-template-columns: 1fr; padding-top: 0;">
+      <div class="media"><img src="img/logspro-trazas.jpg" alt="Vista de trazas: INPUT y OUTPUT agrupados por ID, con errores y trazas sin respuesta resaltadas" loading="lazy" /></div>
+    </article>
+
     <!-- Lightshot Desktop -->
     <article class="proyecto">
       <div class="media"><img src="img/lightshot-anotaciones.jpg" alt="Lightshot Desktop anotando una captura: rectángulo, flecha, numeración y resaltado" loading="lazy" /></div>
@@ -470,6 +491,27 @@
       <div class="media"><img src="img/pandera-reglas.jpg" alt="Reglas actuales por columna: descripción, nulos, unicidad y regex" loading="lazy" /></div>
     </article>
 
+    <!-- Creador de Manuales -->
+    <article class="proyecto">
+      <div class="media"><img src="img/manuales-editor.jpg" alt="Creador de Manuales: editor paso a paso con la captura, el título y la instrucción generada por OCR" loading="lazy" /></div>
+      <div class="info">
+        <h3>Creador de Manuales</h3>
+        <div class="rol">De guion de pruebas Excel a manual de usuario en PDF y Word</div>
+        <div class="case">
+          <div class="pr"><b>Problema</b><span>Cada vez que se liberaba una funcionalidad había que escribir el manual de usuario desde cero, copiando las capturas y redactando los pasos que ya existían en el guion de pruebas de QA.</span></div>
+          <div class="so"><b>Solución</b><span>Servidor Flask local que lee el <strong>guion Excel</strong> (detecta la hoja de casos y la de anexos, extrae las capturas incrustadas del XML del .xlsx), describe cada pantalla con <strong>OCR local (RapidOCR)</strong> o un modelo de visión con Ollama, y reescribe el texto de tono QA a tono de manual ("Ingrese", "Seleccione"). Editor web para revisar cada paso, anotar sobre la captura y reordenar; salida en <strong>PDF (ReportLab)</strong> y <strong>Word</strong> con portada, control de versiones, índice y figuras numeradas. Empaquetado con PyInstaller e Inno Setup.</span></div>
+          <div class="re"><b>Resultado</b><span>El manual sale en minutos a partir del guion que QA ya tiene, sin volver a redactar ni recortar capturas, y todo se procesa en el equipo: ninguna pantalla interna sale a internet.</span></div>
+        </div>
+        <div class="tech"><span>Python</span><span>Flask</span><span>ReportLab</span><span>python-docx</span><span>RapidOCR</span><span>Ollama</span><span>openpyxl</span></div>
+        <div class="links"><span class="priv">🔒 Repositorio privado. Demostración y código disponibles en entrevista.</span></div>
+      </div>
+    </article>
+
+    <!-- Galería Manuales -->
+    <article class="proyecto" style="grid-template-columns: 1fr; padding-top: 0;">
+      <div class="media"><img src="img/manuales-pdf.jpg" alt="Manual generado: portada con control de versiones y páginas con pasos, capturas numeradas y resultado esperado" loading="lazy" /></div>
+    </article>
+
   </div>
 </section>
 
@@ -509,8 +551,8 @@
           <div><span class="ti">📱</span><div><b>MobiFlow</b>App de record &amp; playback móvil construida sobre Appium para automatizar flujos en dispositivos reales.</div></div>
           <div><span class="ti">✅</span><div><b>Validador de datos (Pandera)</b>Reglas en lenguaje natural convertidas a esquemas Pandera, con reporte de errores fila a fila.</div></div>
           <div><span class="ti">🔍</span><div><b>silin-qa-validator</b>Validación automática de cruces Mongo vs. matriz Excel en migraciones tributarias.</div></div>
-          <div><span class="ti">📄</span><div><b>Generador de manual de pruebas</b>Script Python que convierte cualquier guion Excel en un manual de usuario PDF paso a paso (ReportLab).</div></div>
-          <div><span class="ti">📡</span><div><b>Visor de logs local</b>Herramienta Node.js/Vite para visualizar logs de validación en tiempo real desde el entorno local.</div></div>
+          <div><span class="ti">📄</span><div><b>Creador de Manuales</b>Convierte el guion de pruebas Excel en un manual de usuario PDF/Word: extrae las capturas, las describe con OCR local y arma el documento paso a paso.</div></div>
+          <div><span class="ti">📡</span><div><b>LOGSPRO · Log Analyzer QA</b>App Electron que agrupa INPUT/OUTPUT por traza en logs de banca móvil, detecta errores y trazas sin respuesta y exporta a Excel/PDF.</div></div>
           <div><span class="ti">📸</span><div><b>Lightshot Desktop</b>Captura, anotación y grabación de pantalla para evidencias QA.</div></div>
         </div>
       </article>
@@ -626,7 +668,7 @@
         <div class="ico">🛠️</div>
         <h4>Herramientas</h4>
         <p>Control de versiones, contenedores, integración continua y empaquetado de aplicaciones.</p>
-        <div class="tags"><span>Git</span><span>GitHub</span><span>GitLab</span><span>Docker</span><span>CI/CD</span><span>Vite</span><span>ReportLab</span><span>electron-builder</span><span>PyInstaller</span><span>Claude / LLMs</span><span>Documentación técnica</span></div>
+        <div class="tags"><span>Git</span><span>GitHub</span><span>GitLab</span><span>Docker</span><span>CI/CD</span><span>Vite</span><span>ReportLab</span><span>RapidOCR</span><span>Ollama</span><span>electron-builder</span><span>PyInstaller</span><span>Claude / LLMs</span><span>Documentación técnica</span></div>
       </div>
 
     </div>
